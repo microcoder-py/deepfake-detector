@@ -8,7 +8,7 @@ The model makes use of a CNN-LSTM model for deepfake detection. The core premise
 
 I have used OpenCV library to assist with face detection and TensorFlow for everything else. The videos are preprocessed to extract the frames, detect faces, and the corresponding directories are used to build the data pipeline. 
 
-The sequence of images is used as input
+The sequence of images is used as input. This model currently does not take audio into consideration but can be extended to take audio as input as well. 
 
 ## Remarks
 
