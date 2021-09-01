@@ -1,6 +1,6 @@
 # Deepfake Detection using CNN-LSTM Model for DFDC Dataset by Facebook
 
-## Dataset: 
+## Dataset
 [Click Here](https://ai.facebook.com/blog/deepfake-detection-challenge/)
 
 ## Basic Idea
