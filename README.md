@@ -10,7 +10,7 @@ The sequence of images is used as input. This model currently does not take audi
 ## Dataset
 [Click Here](https://ai.facebook.com/blog/deepfake-detection-challenge/)
 
-For my purposes I have made use of a subset of the data
+For my purposes I have made use of a subset of the data with 1600 videos evenly split across real and deepfakes (50:50)
 
 
 ## Steps
