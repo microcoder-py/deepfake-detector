@@ -37,6 +37,7 @@ Refer ```train.py```
 
 * If not, pass the directory of the videos to the function ```processing()``` in the file ```processing.py``` and pass the resultant directory to ```train.py```
 ```python
+>>> import processing
 >>> python processing.processing(location = "enter/directory/here", save_path = 'enter/save_path', capture_sec = 5, num_vids = 500)
 >>> python train.py
 ```
