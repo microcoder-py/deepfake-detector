@@ -47,7 +47,7 @@ Refer ```train.py```
 
 * If you simply want to use the model, use ```load_model()``` available under Keras, (assuming you are in the same directory as the model)
 ```python
->>> import tensorflow
+>>> import tensorflow as tf
 >>> model = tf.keras.models.load_model('model')
 ```
 and then use the model the way you see fit
