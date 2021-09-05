@@ -57,7 +57,7 @@ and then use the model the way you see fit
 Now, the model itself is of small capacity, and the complete database was not used, so a lack of generalisation as well as overfit is to be expected. 
 ![acc_per_epoch](https://user-images.githubusercontent.com/71311548/132143100-f0cac1be-4db9-453b-b2c2-2847e84044cc.png)
 
-The accuracy starts at 77.8%, but over time it steadily picks up peaking at 91.2%. This is consistent with the reduction in loss going from epoch 0 to epoch 8, however, we see a drop in accuracy post that. This happened because of repeated random shuffles, and a small stabilisation factor attached to the loss. 
+The accuracy starts at 77.8%, but over time it steadily picks up peaking at 91.2%. This is consistent with the reduction in loss going from epoch 0 to epoch 8, however, we see a drop in accuracy post that. This happened because of repeated random shuffles, and a small stabilisation factor attached to the loss. Another possible reason is that the error rate was set too high, forcing the gradient to move outside an optima
 
 ![loss_per_epoch](https://user-images.githubusercontent.com/71311548/132143097-40fdee01-6817-400f-8d5e-798bbc1698e2.png)
 
