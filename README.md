@@ -38,8 +38,8 @@ Refer ```train.py```
 * If not, pass the directory of the videos to the function ```processing()``` in the file ```processing.py``` and pass the resultant directory to ```train.py```
 ```python
 >>> import processing
->>> processing.processing(location = "enter/directory/here", save_path = 'enter/save_path', capture_sec = 5, num_vids = 500)
->>> train.py
+>>> python processing.processing(location = "enter/directory/here", save_path = 'enter/save_path', capture_sec = 5, num_vids = 500)
+>>> python train.py
 ```
 
 * If you simply want to use the model, use ```load_model()``` available under Keras, (assuming you are in the same directory as the model)
