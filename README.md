@@ -10,6 +10,55 @@ I have used OpenCV library to assist with face detection and TensorFlow for ever
 
 The sequence of images is used as input. This model currently does not take audio into consideration but can be extended to take audio as input as well. 
 
+## Steps
+### Preprocess the video into frames
+This can be achieved using OpenCV. Refer the file ```generate_preprocessed_files.py``` for an idea of how to achieve this.
+
+### Detect faces
+Using OpenCV, we can then detect individual faces in the images, and then use these as a sequence. Here are a few examples
+
+![032](https://user-images.githubusercontent.com/71311548/132142866-d98b6a1b-6752-4aeb-b3a8-2f6a647b4782.jpeg) ![033](https://user-images.githubusercontent.com/71311548/132142871-d48385ec-1d13-4e68-a136-519d7dab5a0b.jpeg) ![034](https://user-images.githubusercontent.com/71311548/132142877-c19badfd-6fd8-4186-b396-31ad475c3660.jpeg) ![035](https://user-images.githubusercontent.com/71311548/132142879-46b9f4bc-47d4-483a-aeb6-6f93f2c26c49.jpeg)
+
+![052](https://user-images.githubusercontent.com/71311548/132142890-f74f850f-c2fd-4855-befb-3bf8b442da01.jpeg) ![053](https://user-images.githubusercontent.com/71311548/132142893-e9cd6fb0-86f9-47b9-85f9-926474f2647a.jpeg) ![054](https://user-images.githubusercontent.com/71311548/132142897-2453da35-d008-4371-8389-5c007a2fae02.jpeg) ![055](https://user-images.githubusercontent.com/71311548/132142898-f0746651-9860-4236-b374-3e0ef297fcdb.jpeg)
+
+Reason we would prefer using faces and not the whole body is because in this dataset the GANs have only modified the facial structure and not bodily structure. Of course, this could be possible in other sets.
+
+### Build Dataset
+Refer ```data_pipeline.py```. Nothing too fancy here apart from the use of ```TensorArrays```, it is an important concept I could not find any examples of online. 
+
+### Train Model with Distributed Strategy
+Refer ```train.py```
+
+## To run files
+* If you already have preprocessed files, run ```train.py``` with appropriate parameter changes
+```python
+>>> python train.py
+```
+
+* If not, pass the directory of the videos to the function ```processing()``` in the file ```processing.py``` and pass the resultant directory to ```train.py```
+```python
+>>> python processing.processing(location = "enter/directory/here", save_path = 'enter/save_path', capture_sec = 5, num_vids = 500)
+>>> python train.py
+```
+
+* If you simply want to use the model, use ```load_model()``` available under Keras, (assuming you are in the same directory as the model)
+```python
+>>> import tensorflow
+>>> model = tf.keras.models.load_model('model')
+```
+and then use the model the way you see fit
+
+## Results
+
+Now, the model itself is of small capacity, and the complete database was not used, so a lack of generalisation as well as overfit is to be expected. 
+![acc_per_epoch](https://user-images.githubusercontent.com/71311548/132143100-f0cac1be-4db9-453b-b2c2-2847e84044cc.png)
+
+The accuracy starts at 77.8%, but over time it steadily picks up. This is consistent with the reduction in loss going from epoch 0 to epoch 8, however, we see a drop in accuracy post that. This happened because of repeated random shuffles, and a small stabilisation factor attached to the loss. 
+
+![loss_per_epoch](https://user-images.githubusercontent.com/71311548/132143097-40fdee01-6817-400f-8d5e-798bbc1698e2.png)
+
+Evaluation too was performed on a reduced dataset and as expected, the fit was poor. 
+
 ## Remarks
 
 OpenCV is an amazing library, but can at times falter to detect faces, or frankly, anything at all. In order to make sure that I capture as much information from the sequences as possible, I averaged the bounding boxes from the past information in the sequence and used it to detect faces in the images where no face was found
