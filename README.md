@@ -57,7 +57,7 @@ The accuracy starts at 77.8%, but over time it steadily picks up. This is consis
 
 ![loss_per_epoch](https://user-images.githubusercontent.com/71311548/132143097-40fdee01-6817-400f-8d5e-798bbc1698e2.png)
 
-Evaluation too was performed on a reduced dataset and as expected, the fit was poor. 
+Evaluation too was performed on a reduced dataset and as expected, the fit was poor. The model due to limited capacity and insufficient training data (both caused by a lack of computational power) does not generalise well. 
 
 ## Remarks
 
