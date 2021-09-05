@@ -10,7 +10,7 @@ The sequence of images is used as input. This model currently does not take audi
 ## Dataset
 [Click Here](https://ai.facebook.com/blog/deepfake-detection-challenge/)
 
-For my purposes I have made use of a subset of the data since I did not have the kind of computational power needed to train over the whole dataset
+For my purposes I have made use of a subset of the data
 
 
 ## Steps
